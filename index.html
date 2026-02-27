@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RoboRangers - Where Young Minds Become Future Innovators. A multi-level robotics journey focused on skills, discipline, and creativity.">
+    <meta name="keywords" content="robotics, innovation, education, STEM, skills, creativity">
+    <meta name="author" content="RoboRangers">
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <title>RoboRangers - Where Young Minds Become Future Innovators</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="#home"><img src="assets/images/logo.png" alt="logo" style="width: 190px; height: 165px;"></a>
+                </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#levels" class="nav-link">Levels</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#media" class="nav-link">Media</a></li>
+                <li><a href="#about" class="nav-link">about</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <button class="cta-btn nav-cta">Join RoboRangers</button>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">ROBO RANGER</h1>
+            <p class="hero-subtitle">Where Young Minds Become Future Innovators</p>
+            <p class="hero-description">A multi-level robotics journey focused on skills, discipline, and creativity</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.querySelector('#levels').scrollIntoView({ behavior: 'smooth' })">Explore Levels</button>
+                <button class="btn btn-secondary" onclick="document.querySelector('#media').scrollIntoView({ behavior: 'smooth' })">Watch Demo</button>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="robot-placeholder">
+                <div class="robot-icon"><a href="#Contact"><img src="assets/images/logo1.png" alt="logo"></a></div>
+            </div>
+        </div>
+        
+        <!-- Background shapes -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </section>
+
+    <!-- IMAGE SLIDER (SWIPER) -->
+    <section class="slider-section">
+        <div class="slider-header">
+            <h2>RoboRangers in Action</h2>
+            <p>Robotics activities, competitions, and innovation labs</p>
+        </div>
+        
+        <div class="swiper slider-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slider-slide">
+                    <div class="slide-image">
+                        <img src="assets/images/slide1.jpg" alt="Robotics Activities">
+                        <span class="slide-label">Robotics Activities</span>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-slide">
+                    <div class="slide-image">
+                        <img src="assets/images/slide2.jpg" alt="Kids Building Robots">
+                        <span class="slide-label">Kids Building Robots</span>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-slide">
+                    <div class="slide-image">
+                        <img src="assets/images/slide3.jpg" alt="Robo Competitions">
+                        <span class="slide-label">Robo Competitions</span>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-slide">
+                    <div class="slide-image">
+                        <img src="assets/images/slide4.jpg" alt="Innovation Labs">
+                        <span class="slide-label">Innovation Labs</span>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-slide">
+                    <div class="slide-image">
+                        <img src="assets/images/sli de5.jpg" alt="Team Building">
+                        <span class="slide-label">Team Building</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-button-prev slider-button-prev"></div>
+            <div class="swiper-button-next slider-button-next"></div>
+            <div class="swiper-pagination slider-pagination"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT ROBO RANGER -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <div class="image-placeholder">
+                    <div class="illustration"><img src="assets/images/11.png" alt=""></div>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <h2 class="section-title">What is RoboRangers?</h2>
+                <p class="about-text">RoboRangers is a multi-level robotics platform designed to ignite curiosity, foster innovation, and build the future leaders of tomorrow. We believe that robotics isn't just about machines—it's about developing minds, building character, and unlocking creative potential.</p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <span class="feature-icon">⚙️</span>
+                        <h3>Robotics Mindset</h3>
+                        <p>Problem-solving through hands-on learning and experimentation</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎨</span>
+                        <h3>Creativity First</h3>
+                        <p>Every challenge is an opportunity to think differently and innovate</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">👥</span>
+                        <h3>Teamwork & Discipline</h3>
+                        <p>Collaboration, leadership, and structured growth at every level</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌟</span>
+                        <h3>Future Skills</h3>
+                        <p>Building expertise for the careers of tomorrow</p>
+                    </div>
+                </div>
+                
+                <p class="about-mission"><strong>Our Mission:</strong> To empower young minds through robotics, transforming curiosity into innovation and ambition into achievement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RoboRangers STEM ROBOTICS LEARNING PATH -->
+    <section id="levels" class="learning-path-section">
+        <div class="learning-path-header">
+            <h2 class="section-title">RoboRangers STEM Robotics Learning Path</h2>
+            <p class="section-subtitle">6-Level Progressive Robotics & Technology Curriculum</p>
+            <p class="section-description">From Visual Programming to Advanced AI - A Comprehensive STEM Journey</p>
+        </div>
+        
+        <div class="learning-timeline">
+            <!-- LEVEL 1 -->
+            <div class="learning-level level-1">
+                <div class="level-marker">
+                    <div class="level-number">1</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">SCRATCH PROGRAMMING & AI THINKING</h3>
+                        <span class="level-badge">Beginner</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students learn visual programming concepts through Scratch, developing logical thinking and foundational AI principles. Perfect for ages 8-10 to start their STEM journey with block-based coding.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>Logical thinking patterns</li>
+                                    <li>Visual programming concepts</li>
+                                    <li>Basic algorithm design</li>
+                                    <li>Problem-solving mindset</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>Scratch platform</li>
+                                    <li>Computer/Laptop</li>
+                                    <li>Beginner robotics kits</li>
+                                    <li>Visual learning materials</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(1)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LEVEL 2 -->
+            <div class="learning-level level-2">
+                <div class="level-marker">
+                    <div class="level-number">2</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">ELECTRONICS, C/C++ & ARDUINO FOUNDATION</h3>
+                        <span class="level-badge">Intermediate</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students explore electronics fundamentals and learn C/C++ programming with Arduino boards. Ideal for ages 10-12 to understand hardware-software integration and real-world applications.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>Electronics basics</li>
+                                    <li>C/C++ programming</li>
+                                    <li>Arduino board usage</li>
+                                    <li>Input/output control</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>Arduino boards (Uno, Mega)</li>
+                                    <li>Breadboards & components</li>
+                                    <li>LEDs, resistors, sensors</li>
+                                    <li>Arduino IDE software</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(2)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LEVEL 3 -->
+            <div class="learning-level level-3">
+                <div class="level-marker">
+                    <div class="level-number">3</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">SENSORS & BASIC ROBOTICS</h3>
+                        <span class="level-badge">Intermediate</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students build and program functional robots using sensors and actuators. Ages 11-13 explore line followers, obstacle avoidance robots, and real-world robotics concepts in hands-on projects.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>Sensor integration</li>
+                                    <li>Motor control systems</li>
+                                    <li>Robot programming</li>
+                                    <li>Real-world problem solving</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>DC motors & servos</li>
+                                    <li>IR/Ultrasonic sensors</li>
+                                    <li>Robot chassis kits</li>
+                                    <li>Power supplies & batteries</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(3)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LEVEL 4 -->
+            <div class="learning-level level-4">
+                <div class="level-marker">
+                    <div class="level-number">4</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">IoT & SMART SYSTEMS</h3>
+                        <span class="level-badge">Advanced</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students explore Internet of Things concepts and create smart, connected devices. Ages 13+ learn about automation, sensor data communication, and intelligent systems for the modern world.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>IoT architecture</li>
+                                    <li>Smart device programming</li>
+                                    <li>Automation principles</li>
+                                    <li>Data communication</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>WiFi/Bluetooth modules</li>
+                                    <li>IoT development boards</li>
+                                    <li>Cloud platforms (AWS/Azure)</li>
+                                    <li>Mobile app integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(4)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LEVEL 5 -->
+            <div class="learning-level level-5">
+                <div class="level-marker">
+                    <div class="level-number">5</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">RASPBERRY PI SYSTEMS</h3>
+                        <span class="level-badge">Advanced</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students master Raspberry Pi architecture and Linux systems with Python programming. Ages 14+ develop advanced robotics projects and integrate multiple technologies into comprehensive smart systems.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>Raspberry Pi architecture</li>
+                                    <li>Linux operating system</li>
+                                    <li>Python programming</li>
+                                    <li>System integration</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>Raspberry Pi 4/5</li>
+                                    <li>Linux distributions</li>
+                                    <li>Python IDE & frameworks</li>
+                                    <li>GPIO expansion modules</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(5)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LEVEL 6 -->
+            <div class="learning-level level-6">
+                <div class="level-marker">
+                    <div class="level-number">6</div>
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 class="level-title">ADVANCED SYSTEMS & AI INTRO</h3>
+                        <span class="level-badge">Expert</span>
+                    </div>
+                    
+                    <div class="level-body">
+                        <p class="level-description">
+                            Students explore cutting-edge technologies including AI fundamentals, vision-based systems, and advanced robotics. Ages 15+ prepare for careers in robotics, AI, and emerging technologies.
+                        </p>
+                        
+                        <div class="level-details">
+                            <div class="detail-column">
+                                <h4>🎯 Skills Developed</h4>
+                                <ul class="skills-list">
+                                    <li>AI & machine learning basics</li>
+                                    <li>Computer vision intro</li>
+                                    <li>Advanced robotics concepts</li>
+                                    <li>Future technology readiness</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="detail-column">
+                                <h4>🛠️ Hardware & Tools</h4>
+                                <ul class="tools-list">
+                                    <li>Advanced robotics platforms</li>
+                                    <li>AI frameworks (TensorFlow)</li>
+                                    <li>Vision modules & cameras</li>
+                                    <li>GPU computing resources</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="demo-btn" onclick="openVideoModal(6)">▶ Watch Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- VIDEO MODAL -->
+    <div id="videoModal" class="video-modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeVideoModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+            <div class="modal-video-container">
+                <video id="modalVideo" width="100%" controls>
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO SECTION
+    <section id="media" class="video-section">
+        <div class="video-container">
+            <h2 class="section-title">Experience RoboRangers in Action</h2>
+            
+            <div class="video-player">
+                <div class="video-placeholder">
+                    <div class="play-button">▶</div>
+                    <img src="videos/promo.mp4" alt="RoboRangers Demo">
+                </div>
+            </div>
+            
+            <p class="video-description">Demo videos, workshops, and RoboRangers missions coming soon. Upload your video link or embed content here.</p>
+        </div>
+    </section> -->
+    <section id="media" class="video-section">
+    <div class="video-container">
+        <h2 class="section-title">Experience RoboRangers in Action</h2>
+
+        <div class="video-player" style="position: relative; max-width: 800px; margin: auto;">
+            <!-- Thumbnail image -->
+            <img id="videoThumbnail" src="assets/images/8.png" alt="RoboRangers Demo" style="width: 100%; border-radius: 10px; cursor: pointer; display: block;">
+
+            <!-- Overlay play button -->
+            <div id="thumbnailPlayButton" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 60px;
+                color: white;
+                text-shadow: 0 0 15px black;
+                cursor: pointer;
+            ">▶</div>
+
+            <!-- Actual video hidden initially -->
+            <video id="promoVideo" style="width: 100%; border-radius: 10px; display: none;" controls>
+                <source src="videos/promo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-subtitle">A glimpse into the RoboRangers world</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/images/1.png" alt="Robot showcase">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Robot showcase</h5></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/2.png" alt="Kids working with robots">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Kids working <br>with robots</h5></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/3.jpeg" alt="Innovation lab">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Innovation lab</h5></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/4.jpeg" alt="Event competition">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Event competition</h5></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/5.png" alt="Team building">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Team building</h5></span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/6.png" alt="Workshop session">
+                <div class="gallery-overlay" style="text-align: center;">
+                    <span class="zoom-icon"><h5>🔍</h5><h5>Workshop session</h5></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <h2 class="section-title">RoboRangers Impact</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-count="1250">0</div>
+                <div class="stat-label">Robo Missions Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="3400">0</div>
+                <div class="stat-label">Young Innovators Trained</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="850">0</div>
+                <div class="stat-label">Robots Built</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="180">0</div>
+                <div class="stat-label">Events & Challenges</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / JOIN SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">Join the RoboRangers Journey</h2>
+            <p class="section-subtitle">Start your adventure today and become a future innovator</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Your Phone">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Tell us about your interest in RoboRangers" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">Join the RoboRangers Journey</button>
+            </form>
+            
+            <p class="form-note">We'll get back to you within 24 hours. Welcome to the future of robotics!</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <span class="logo-icon"><a href="#home"><img src="assets/images/logo3.png" alt="logo" style="width: 50%; height: 10%; margin-left: 15%;" ></a></span>
+                    
+                </div>
+                <p class="footer-tagline" style="margin-bottom: 10%;">Where Young Minds Become Future Innovators</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#levels">Levels</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 RoboRangers. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

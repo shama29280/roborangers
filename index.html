@@ -6,7 +6,17 @@
     <meta name="description" content="RoboRangers - Where Young Minds Become Future Innovators. A multi-level robotics journey focused on skills, discipline, and creativity.">
     <meta name="keywords" content="robotics, innovation, education, STEM, skills, creativity">
     <meta name="author" content="RoboRangers">
-    
+    <!-- security headers (also configure on server for stronger protection) -->
+    <!--
+        For better security, serve images with non‑guessable file names or via a
+        server-side script that checks authorization before sending the bytes.
+        Example: /i/8f3b9c.png instead of /assets/images/logo.png
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data:; style-src 'self' 'unsafe-inline' https:; script-src 'self' https: 'unsafe-inline'; font-src 'self' https:">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="no-referrer">
+    <!-- Strict-Transport-Security only applies when you're serving over HTTPS -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,15 +31,29 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <title>RoboRangers - Where Young Minds Become Future Innovators</title>
-    <meta name="description" content="RoboRangers is a hands-on robotics and STEM education initiative helping students learn Arduino, sensors, and automation through practical projects.">
-    <meta name="keywords" content="RoboRangers, robotics classes, STEM learning, Arduino training, Beacon Technology Hub">
+    <!--
+        For stronger hotlink protection, configure your web server (Apache/Nginx/etc.)
+        to deny requests for image files when the Referer header is absent or not from
+        your domain. Example (Nginx):
+
+        location ~* \.(jpg|jpeg|png|gif)$ {
+            valid_referers none blocked yourdomain.com www.yourdomain.com;
+            if ($invalid_referer) {
+                return 403;
+            }
+        }
+
+        This cannot be enforced from static HTML; it must run at the server level.
+    -->
 </head>
-<body>
+<body oncontextmenu="return false;">
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo"><a href="#home"><img src="assets/images/logo.png" alt="logo" style="width: 190px; height: 165px;"></a>
-                </div>
+            <!-- logo converted to background image for protection -->
+            <div class="nav-logo">
+                <a href="#home" class="logo-link" aria-label="RoboRangers logo"></a>
+            </div>
             
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -53,9 +77,7 @@
     <!-- HERO SECTION -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">ROBORANGERS</h1>
-            <p class="hero-description">RoboRangers is a Stem & robotics learning Lab initiative by Beacon Technology Hub</p>
-           
+            <h1 class="hero-title">ROBORANGER</h1>
             <p class="hero-subtitle">Where Young Minds Become Future Innovators</p>
             <p class="hero-description">A multi-level robotics journey focused on skills, discipline, and creativity</p>
             
@@ -86,35 +108,26 @@
         
         <div class="swiper slider-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide slider-slide">
-                    <div class="slide-image">
-                        <img src="assets/images/slide1.jpg" alt="Robotics Activities">
-                        <span class="slide-label">Robotics Activities</span>
-                    </div>
+                <!-- slides use CSS backgrounds to hide URLs and disable direct right-click -->
+                <div class="swiper-slide slider-slide" role="img" aria-label="Robotics Activities" style="background-image:url('assets/images/slide1.jpg');">
+                    <span class="slide-label">Robotics Activities</span>
+                    <div class="watermark">© RoboRangers</div>
                 </div>
-                <div class="swiper-slide slider-slide">
-                    <div class="slide-image">
-                        <img src="assets/images/slide2.jpg" alt="Kids Building Robots">
-                        <span class="slide-label">Kids Building Robots</span>
-                    </div>
+                <div class="swiper-slide slider-slide" role="img" aria-label="Kids Building Robots" style="background-image:url('assets/images/slide2.jpg');">
+                    <span class="slide-label">Kids Building Robots</span>
+                    <div class="watermark">© RoboRangers</div>
                 </div>
-                <div class="swiper-slide slider-slide">
-                    <div class="slide-image">
-                        <img src="assets/images/slide3.jpg" alt="Robo Competitions">
-                        <span class="slide-label">Robo Competitions</span>
-                    </div>
+                <div class="swiper-slide slider-slide" role="img" aria-label="Robo Competitions" style="background-image:url('assets/images/slide3.jpg');">
+                    <span class="slide-label">Robo Competitions</span>
+                    <div class="watermark">© RoboRangers</div>
                 </div>
-                <div class="swiper-slide slider-slide">
-                    <div class="slide-image">
-                        <img src="assets/images/slide4.jpg" alt="Innovation Labs">
-                        <span class="slide-label">Innovation Labs</span>
-                    </div>
+                <div class="swiper-slide slider-slide" role="img" aria-label="Innovation Labs" style="background-image:url('assets/images/slide4.jpg');">
+                    <span class="slide-label">Innovation Labs</span>
+                    <div class="watermark">© RoboRangers</div>
                 </div>
-                <div class="swiper-slide slider-slide">
-                    <div class="slide-image">
-                        <img src="assets/images/sli de5.jpg" alt="Team Building">
-                        <span class="slide-label">Team Building</span>
-                    </div>
+                <div class="swiper-slide slider-slide" role="img" aria-label="Team Building" style="background-image:url('assets/images/sli de5.jpg');">
+                    <span class="slide-label">Team Building</span>
+                    <div class="watermark">© RoboRangers</div>
                 </div>
             </div>
             
@@ -129,7 +142,8 @@
         <div class="about-container">
             <div class="about-image">
                 <div class="image-placeholder">
-                    <div class="illustration"><img src="assets/images/11.png" alt=""></div>
+                    <!-- image converted to CSS background for protection -->
+                    <div class="illustration" style="background-image:url('assets/images/11.png');"></div>
                 </div>
             </div>
             
@@ -506,41 +520,41 @@
         <p class="section-subtitle">A glimpse into the RoboRangers world</p>
         
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="assets/images/1.png" alt="Robot showcase">
+            <div class="gallery-item" role="img" aria-label="Robot showcase" style="background-image:url('assets/images/1.png');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Robot showcase</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/2.png" alt="Kids working with robots">
+            <div class="gallery-item" role="img" aria-label="Kids working with robots" style="background-image:url('assets/images/2.png');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Kids working <br>with robots</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/3.jpeg" alt="Innovation lab">
+            <div class="gallery-item" role="img" aria-label="Innovation lab" style="background-image:url('assets/images/3.jpeg');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Innovation lab</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/4.jpeg" alt="Event competition">
+            <div class="gallery-item" role="img" aria-label="Event competition" style="background-image:url('assets/images/4.jpeg');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Event competition</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/5.png" alt="Team building">
+            <div class="gallery-item" role="img" aria-label="Team building" style="background-image:url('assets/images/5.png');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Team building</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
-            <div class="gallery-item">
-                <img src="assets/images/6.png" alt="Workshop session">
+            <div class="gallery-item" role="img" aria-label="Workshop session" style="background-image:url('assets/images/6.png');">
                 <div class="gallery-overlay" style="text-align: center;">
                     <span class="zoom-icon"><h5>🔍</h5><h5>Workshop session</h5></span>
                 </div>
+                <div class="watermark">© RR</div>
             </div>
         </div>
     </section>
@@ -575,18 +589,19 @@
             <h2 class="section-title">Join the RoboRangers Journey</h2>
             <p class="section-subtitle">Start your adventure today and become a future innovator</p>
             
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mnjbykeo" method="POST">
+
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" placeholder="Your Phone">
+                    <input type="tel" name="phone" placeholder="Your Phone">
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Tell us about your interest in RoboRangers" rows="5"></textarea>
+                    <textarea name="message" placeholder="Tell us about your interest in RoboRangers" rows="5"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-large">Join the RoboRangers Journey</button>
             </form>
@@ -600,15 +615,15 @@
         <div class="footer-content">
             <div class="footer-section">
                 <div class="footer-logo">
-                    <span class="logo-icon"><a href="#home"><img src="assets/images/logo3.png" alt="logo" style="width: 50%; height: 10%; margin-left: 15%;" ></a></span>
+                    <span class="logo-icon"><a href="#home" class="footer-logo-link" aria-label="RoboRangers logo" style="width: 325px; height: 150px;"></a></span>
                     
                 </div>
-                <p class="footer-tagline" style="margin-bottom: 10%;">Where Young Minds Become Future Innovators</p>
+                <p class="footer-tagline" style="margin-bottom: 19%;">Where Young Minds Become Future Innovators</p>
             </div>
             
-            <div class="footer-links">
+            <div class="footer-links" style="margin-left: 20%;">
                 <h4>Quick Links</h4>
-                <ul>
+                <ul style="margin-left: 9%;">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#levels">Levels</a></li>
                     <li><a href="#about">About</a></li>
@@ -617,12 +632,13 @@
             </div>
             
             <div class="footer-social">
-                <h4>Follow Us</h4>
+                <h4 style="margin-left: 25%;">Follow Us</h4>
                 <div class="social-icons">
                     <a href="#" aria-label="Facebook">f</a>
                     <a href="#" aria-label="Twitter">𝕏</a>
                     <a href="#" aria-label="Instagram">📷</a>
                     <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="https://wa.me/916203991985" target="_blank" aria-label="WhatsApp"><img src="assets/icons/whatsapp_icon.png" alt="whatsapp icon" style="width: 50%; height: 50%;"></a>
                 </div>
             </div>
         </div>
@@ -641,9 +657,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-

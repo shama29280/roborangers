@@ -17,6 +17,18 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* animation / responsive helper variables */
+    --anim-float-distance: clamp(1rem, 5vw, 2rem);
+    --anim-float-duration: 6s;
+    --anim-float-duration-mobile: 4s;
+    --anim-slide-distance: clamp(1rem, 5vw, 2rem);
+    --anim-slide-duration: 0.8s;
+    --anim-pulse-scale: 1.1;
+    --anim-fade-duration: 0.6s;
+    --anim-slideup-duration: 0.6s;
+    --anim-reduced-motion-duration: 0.001s;
+    --anim-mobile-iterations: 1;
 }
 
 /* ========================================
@@ -114,7 +126,7 @@ button {
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
+    transform: translateY(-0.2rem);
     box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
 
@@ -127,7 +139,7 @@ button {
 .btn-secondary:hover {
     background: var(--primary-blue);
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-0.2rem);
 }
 
 .btn-large {
@@ -148,7 +160,7 @@ button {
 }
 
 .cta-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
     box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
     background: #16a34a;
 }
@@ -283,41 +295,50 @@ button {
     position: absolute;
     border-radius: 50%;
     opacity: 0.1;
+    will-change: transform;
 }
 
 .shape-1 {
-    width: 300px;
-    height: 300px;
+    width: clamp(8rem, 20vw, 15rem);
+    height: clamp(8rem, 20vw, 15rem);
     background: var(--primary-blue);
     top: 10%;
     right: 10%;
-    animation: float 6s ease-in-out infinite;
+    animation: float var(--anim-float-duration) ease-in-out infinite;
 }
 
 .shape-2 {
-    width: 200px;
-    height: 200px;
+    width: clamp(6rem, 15vw, 12rem);
+    height: clamp(6rem, 15vw, 12rem);
     background: var(--primary-green);
     bottom: 20%;
     left: 5%;
-    animation: float 8s ease-in-out infinite reverse;
+    animation: float calc(var(--anim-float-duration) * 1.2) ease-in-out infinite reverse;
 }
 
 .shape-3 {
-    width: 150px;
-    height: 150px;
+    width: clamp(5rem, 12vw, 10rem);
+    height: clamp(5rem, 12vw, 10rem);
     background: var(--primary-red);
     top: 50%;
     right: 5%;
-    animation: float 7s ease-in-out infinite;
+    animation: float calc(var(--anim-float-duration) * 1.1) ease-in-out infinite;
 }
 
-@keyframes float {
+@-webkit-keyframes float {
     0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(20px);
+        transform: translateY(var(--anim-float-distance));
+    }
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(var(--anim-float-distance));
     }
 }
 
@@ -336,7 +357,8 @@ button {
     background-clip: text;
     margin-bottom: 1rem;
     letter-spacing: -1px;
-    animation: slideInLeft 0.8s ease-out;
+    animation: slideInLeft var(--anim-slide-duration) ease-out;
+    will-change: opacity, transform;
 }
 
 .hero-subtitle {
@@ -344,26 +366,39 @@ button {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 1rem;
-    animation: slideInLeft 0.8s ease-out 0.1s backwards;
+    animation: slideInLeft var(--anim-slide-duration) ease-out 0.1s backwards;
+    will-change: opacity, transform;
 }
 
 .hero-description {
     font-size: 1.1rem;
     color: var(--text-light);
     margin-bottom: 2.5rem;
-    animation: slideInLeft 0.8s ease-out 0.2s backwards;
+    animation: slideInLeft var(--anim-slide-duration) ease-out 0.2s backwards;
+    will-change: opacity, transform;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
-    animation: slideInLeft 0.8s ease-out 0.3s backwards;
+    animation: slideInLeft var(--anim-slide-duration) ease-out 0.3s backwards;
+    will-change: opacity, transform;
 }
 
+@-webkit-keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(calc(-1 * var(--anim-slide-distance)));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 @keyframes slideInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(calc(-1 * var(--anim-slide-distance)));
     }
     to {
         opacity: 1;
@@ -372,10 +407,11 @@ button {
 }
 
 .robot-icon {
-    width: 220px;      /* adjust size */
+    width: clamp(22rem, 30vw, 20rem);      /* responsive */
     height: auto;
     object-fit: contain;
-    animation: float 4s ease-in-out infinite;
+    animation: float var(--anim-float-duration) ease-in-out infinite;
+    will-change: transform;
 }
 
 .hero-visual {
@@ -387,28 +423,37 @@ button {
 }
 
 .robot-placeholder {
-    width: 300px;
-    height: 300px;
+    width: clamp(10rem, 25vw, 18rem);
+    height: clamp(10rem, 25vw, 18rem);
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px dashed var(--primary-blue);
-    animation: float 6s ease-in-out infinite;
+    animation: float var(--anim-float-duration) ease-in-out infinite;
 }
 
 .robot-icon {
-    font-size: 8rem;
-    animation: pulse 2s ease-in-out infinite;
+    font-size: clamp(6rem, 18vw, 10rem);
+    animation: pulse var(--anim-slide-duration) ease-in-out infinite;
+    will-change: transform;
 }
 
+@-webkit-keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(var(--anim-pulse-scale));
+    }
+}
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(var(--anim-pulse-scale));
     }
 }
 
@@ -479,6 +524,90 @@ button {
     border-radius: 6px;
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+/* ---------- protection & background utilities ---------- */
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none; /* all images are non-interactive by default */
+}
+
+/* clickable links with images should still work */
+a img,
+.nav-logo .logo-link,
+.hero-logo,
+#videoThumbnail,
+.video-player img {
+    pointer-events: auto; /* keep interactive images clickable */
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* transparent overlay to catch clicks and prevent saving */
+.img-protect::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    cursor: default;
+    pointer-events: auto;
+}
+
+/* logo backgrounds */
+.logo-link {
+    display: block;
+    width: 190px;
+    height: 165px;
+    background: url('../assets/images/logo.png') no-repeat center/contain;
+}
+
+.footer-logo-link {
+    display: block;
+    width: 90px;
+    height: 36px;
+    background: url('../assets/images/logo3.png') no-repeat center/contain;
+    background-size: contain;
+}
+
+.hero-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/logo1.png') no-repeat center/contain;
+}
+
+.slider-slide {
+    background-size: cover;
+    background-position: center;
+    position: relative; /* for watermark positioning */
+}
+
+.slider-slide .watermark,
+.gallery-item .watermark {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    pointer-events: none;
+    user-select: none;
+}
+
+.gallery-item {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* ensure leftover <img> tags (if any) do not display */
+.slide-image,
+.gallery-item img {
+    display: none !important;
 }
 
 .slider-button-prev,
@@ -567,8 +696,13 @@ button {
 }
 
 .illustration {
-    font-size: 6rem;
-    animation: float 4s ease-in-out infinite;
+    /* now used as a background container rather than <img> */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: float var(--anim-float-duration) ease-in-out infinite;
+    will-change: transform;
 }
 
 .about-content h2 {
@@ -800,7 +934,7 @@ button {
 }
 
 .level-content:hover {
-    transform: translateY(-5px);
+    transform: translateY(-0.3rem);
     box-shadow: var(--shadow-xl);
 }
 
@@ -912,12 +1046,12 @@ button {
 }
 
 .demo-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-0.2rem);
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
 .demo-btn:active {
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 /* ========================================
@@ -934,7 +1068,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn var(--anim-fade-duration) ease-out;
 }
 
 .modal-overlay {
@@ -958,7 +1092,7 @@ button {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-xl);
-    animation: slideUp 0.3s ease-out;
+    animation: slideUp var(--anim-slideup-duration) ease-out;
 }
 
 .modal-close {
@@ -1211,7 +1345,7 @@ video {
 }
 
 .stat-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-0.625rem);
     box-shadow: var(--shadow-xl);
 }
 
@@ -1373,7 +1507,7 @@ video {
 .social-icons a:hover {
     background: var(--primary-green);
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-0.2rem);
 }
 
 .footer-divider {
@@ -1804,19 +1938,29 @@ video {
    ANIMATIONS
    ======================================== */
 
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes slideUp {
     from {
         opacity: 0;
+        transform: translateY(var(--anim-slide-distance));
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
-
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(var(--anim-slide-distance));
     }
     to {
         opacity: 1;
@@ -1825,16 +1969,76 @@ video {
 }
 
 .fade-in {
-    animation: fadeIn 0.6s ease-out;
+    animation: fadeIn var(--anim-fade-duration) ease-out;
+    will-change: opacity;
 }
 
 .slide-up {
-    animation: slideUp 0.6s ease-out;
+    animation: slideUp var(--anim-slideup-duration) ease-out;
+    will-change: opacity, transform;
 }
 
 /* Intersection Observer animations */
 .has-animated {
-    animation: slideUp 0.6s ease-out;
+    animation: slideUp var(--anim-slideup-duration) ease-out;
+    will-change: opacity, transform;
+}
+
+/* ===== responsive animation tweaks ===== */
+
+@media (max-width: 480px) {
+    :root {
+        --anim-float-distance: clamp(0.5rem, 10vw, 1.5rem);
+        --anim-float-duration: var(--anim-float-duration-mobile);
+        --anim-slide-distance: clamp(0.5rem, 10vw, 1.5rem);
+        --anim-slide-duration: 0.6s;
+    }
+
+    .hero {
+        padding: 40px 10px;
+        flex-direction: column;
+    }
+    .hero-title { font-size: 2.5rem; animation-duration: 0.7s; }
+    .hero-subtitle { font-size: 1.4rem; }
+    .hero-description { font-size: 1rem; }
+    .hero-buttons { flex-direction: column; gap: 1rem; }
+
+    .shape, .robot-icon, .robot-placeholder, .illustration {
+        animation-iteration-count: var(--anim-mobile-iterations);
+    }
+}
+
+@media (min-width: 481px) and (max-width:768px) {
+    :root {
+        --anim-float-duration: 6s;
+        --anim-slide-duration: 0.7s;
+    }
+}
+
+@media (min-width: 769px) and (max-width:1024px) {
+    :root {
+        --anim-float-duration: 6s;
+        --anim-slide-duration: 0.75s;
+    }
+}
+
+@media (min-width:1025px) {
+    :root {
+        --anim-float-duration: 6s;
+        --anim-slide-duration: 0.8s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: var(--anim-reduced-motion-duration) !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+    }
+    .shape, .robot-icon, .robot-placeholder, .illustration,
+    .fade-in, .slide-up, .has-animated {
+        will-change: auto;
+    }
 }
 
 

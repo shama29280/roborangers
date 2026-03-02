@@ -4,6 +4,7 @@
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', function () {
+    initProtection(); // run early to block unwanted actions and protect assets
     initNavbar();
     initSlider();
     initCounters();
@@ -13,6 +14,35 @@ document.addEventListener('DOMContentLoaded', function () {
     initGalleryLightbox();
     initLazyLoading();
 });
+
+// ========================================
+// PROTECTION MODULE
+// ========================================
+function initProtection() {
+    // core event handlers are encoded to obscure them from casual view
+    var encoded = "ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignY29udGV4dG1lbnUnLGZ1bmN0aW9uKGUpe2UucHJldmVu" +
+                  "dERlZmF1bHQoKTt9KTtkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdkcmFnc3RhcnQnLGZ1bmN0aW9uKGUpe2lmKGUudGFyZ2V0LnRhZ05hbWU9PT0nSU1HJyllLnByZXZlbnREZWZhdWx0KCk7fSk7ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsZnVuY3Rpb24oZSl7aWYoZS5jdHJsS2V5fHxlLm1ldGFLZXkpe3ZhciBrPWUua2V5LnRvTG93ZXJDYXNlKCk7aWYoaz09PSdzJ3x8az09PSd1J3x8KGUuc2hpZnRLZXkmJms9PT0naScpKWUucHJldmVudERlZmF1bHQoKTt9aWYoZS5rZXk9PT0nRjEyJyllLnByZXZlbnREZWZhdWx0KCk7fSk7ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignc2VsZWN0c3RhcnQnLGZ1bmN0aW9uKGUpe2lmKGUudGFyZ2V0LnRhZ05hbWU9PT0nSU1HJyllLnByZXZlbnREZWZhdWx0KCk7fSk7c2V0SW50ZXJ2YWwoZnVuY3Rpb24oKXtpZih3aW5kb3cub3V0ZXJXaWR0aC13aW5kb3cuaW5uZXJXaWR0aD4xNjApe2NvbnNvbGUud2FybignRGV2VG9vbHMgZGV0ZWN0ZWQnKTt9fSwxMDAwKTs=";
+    try {
+        eval(atob(encoded));
+    } catch (e) {
+        console.warn('Protection script failed to initialize', e);
+    }
+
+    // append a randomized query parameter to every background url we control
+    document.querySelectorAll('.slider-slide, .gallery-item, .illustration').forEach(el => {
+        const bg = window.getComputedStyle(el).backgroundImage || '';
+        const matches = /url\(["']?(.*?)["']?\)/.exec(bg);
+        if (matches && matches[1]) {
+            let url = matches[1];
+            // don't add repeatedly if already has v=
+            if (!url.includes('v=')) {
+                const rnd = Math.random().toString(36).substr(2,6);
+                el.style.backgroundImage = 'url("' + url + (url.includes('?') ? '&' : '?') + 'v=' + rnd + '")';
+            }
+        }
+    });
+}
+
 
 // ========================================
 // NAVBAR FUNCTIONALITY
@@ -122,28 +152,95 @@ function initCounters() {
 }
 
 // ========================================
-// FORM
+// ROBO RANGERS CONTACT FORM
 // ========================================
 
+document.addEventListener("DOMContentLoaded", function () {
+    initFormHandling();
+});
+
 function initFormHandling() {
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById("contactForm");
     if (!form) return;
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        showMessage("Thank you! We'll contact you soon.", "success");
-        form.reset();
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // ✅ Prevent default redirect
+
+        const button = form.querySelector("button");
+        const originalText = button.innerText;
+
+        // Disable button + show loading state
+        button.disabled = true;
+        button.innerText = "Submitting...";
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+                showMessage("🎉 Thank you! We’ll contact you within 24 hours.", "success");
+                form.reset();
+            } else {
+                showMessage("❌ Oops! Something went wrong. Please try again.", "error");
+            }
+
+        } catch (error) {
+            showMessage("⚠️ Network error. Please check your connection.", "error");
+        }
+
+        // Restore button
+        button.disabled = false;
+        button.innerText = originalText;
     });
 }
 
-function showMessage(msg, type) {
-    const el = document.createElement('div');
-    el.textContent = msg;
-    el.style.marginBottom = '15px';
-    el.style.color = type === 'success' ? 'green' : 'red';
-    document.getElementById('contactForm').before(el);
-    setTimeout(() => el.remove(), 4000);
+
+// ========================================
+// SUCCESS / ERROR MESSAGE
+// ========================================
+
+function showMessage(message, type) {
+
+    // Remove existing message if any
+    const existing = document.querySelector(".form-alert");
+    if (existing) existing.remove();
+
+    const alertBox = document.createElement("div");
+    alertBox.className = "form-alert";
+    alertBox.innerText = message;
+
+    alertBox.style.marginBottom = "20px";
+    alertBox.style.padding = "12px 16px";
+    alertBox.style.borderRadius = "8px";
+    alertBox.style.fontWeight = "500";
+    alertBox.style.textAlign = "center";
+    alertBox.style.transition = "opacity 0.3s ease";
+
+    if (type === "success") {
+        alertBox.style.background = "#e6fffa";
+        alertBox.style.color = "#065f46";
+        alertBox.style.border = "1px solid #34d399";
+    } else {
+        alertBox.style.background = "#ffe6e6";
+        alertBox.style.color = "#991b1b";
+        alertBox.style.border = "1px solid #ef4444";
+    }
+
+    const form = document.getElementById("contactForm");
+    form.parentNode.insertBefore(alertBox, form);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        alertBox.style.opacity = "0";
+        setTimeout(() => alertBox.remove(), 300);
+    }, 5000);
 }
+
 
 // ========================================
 // VIDEO MODAL (✅ FIXED)
@@ -187,14 +284,17 @@ function closeVideoModal() {
 function initGalleryLightbox() {
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.addEventListener('click', () => {
-            const img = item.querySelector('img');
+            // read the computed background image (the URL is wrapped in url("...") )
+            const bg = window.getComputedStyle(item).backgroundImage;
+            const matches = /url\(["']?(.*?)["']?\)/.exec(bg);
+            const src = matches ? matches[1] : '';
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position:fixed;inset:0;background:#000d;
                 display:flex;align-items:center;justify-content:center;z-index:3000;
             `;
             const big = document.createElement('img');
-            big.src = img.src;
+            big.src = src;
             big.style.maxWidth = '90%';
             overlay.appendChild(big);
             overlay.onclick = () => overlay.remove();
@@ -208,8 +308,13 @@ function initGalleryLightbox() {
 // ========================================
 
 function initLazyLoading() {
+    // append a small random query string to make the URL less guessable
     document.querySelectorAll('img[data-src]').forEach(img => {
-        img.src = img.dataset.src;
+        let url = img.dataset.src || '';
+        if (url) {
+            const rnd = Math.random().toString(36).substr(2,6);
+            img.src = url + (url.includes('?') ? '&' : '?') + 'v=' + rnd;
+        }
     });
 }
 

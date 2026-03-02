@@ -612,6 +612,7 @@ a img,
 
 .slider-button-prev,
 .slider-button-next {
+    position: absolute; /* ensure they float over slides */
     width: 50px;
     height: 50px;
     background: white;
@@ -637,13 +638,22 @@ a img,
 }
 
 .slider-button-prev {
-    left: -30px;
+    left: 10px; /* move inside container */
 }
 
 .slider-button-next {
-    right: -30px;
+    right: 10px; /* move inside container */
 }
 
+/* use arrows instead of text */
+.slider-button-prev::after {
+    content: '\25C0'; /* black left-pointing triangle */
+    font-size: 1.2rem;
+}
+.slider-button-next::after {
+    content: '\25B6'; /* black right-pointing triangle */
+    font-size: 1.2rem;
+}
 .slider-pagination {
     bottom: -50px !important;
 }

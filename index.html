@@ -589,7 +589,8 @@
             <h2 class="section-title">Join the RoboRangers Journey</h2>
             <p class="section-subtitle">Start your adventure today and become a future innovator</p>
             
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mnjbykeo" method="POST">
+            <!-- using fetch() for submission; action attribute removed to avoid dual methods -->
+            <form class="contact-form" id="contactForm">
 
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required>

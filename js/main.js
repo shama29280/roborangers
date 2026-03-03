@@ -155,26 +155,36 @@ function initCounters() {
 // ROBO RANGERS CONTACT FORM
 // ========================================
 
-document.addEventListener("DOMContentLoaded", function () {
-    initFormHandling();
-});
-
 function initFormHandling() {
     const form = document.getElementById("contactForm");
     if (!form) return;
 
+    // prevent multiple registrations if this function called twice accidentally
+    if (form.dataset.handlerAttached) return;
+    form.dataset.handlerAttached = "true";
+
     form.addEventListener("submit", async function (e) {
         e.preventDefault(); // ✅ Prevent default redirect
+        console.log('contactForm.submit event fired');
 
         const button = form.querySelector("button");
         const originalText = button.innerText;
+
+        // disable click re‑trigger immediately
+        if (button.disabled) {
+            console.log('submit button already disabled, aborting');
+            return;
+        }
 
         // Disable button + show loading state
         button.disabled = true;
         button.innerText = "Submitting...";
 
         try {
-            const response = await fetch(form.action, {
+            // use explicit URL instead of relying on form.action
+            const url = "https://formspree.io/f/mnjbykeo";
+            console.log('Sending fetch to', url);
+            const response = await fetch(url, {
                 method: "POST",
                 body: new FormData(form),
                 headers: {
@@ -183,13 +193,16 @@ function initFormHandling() {
             });
 
             if (response.ok) {
+                console.log('Fetch succeeded');
                 showMessage("🎉 Thank you! We’ll contact you within 24 hours.", "success");
                 form.reset();
             } else {
+                console.log('Fetch returned non-ok status', response.status);
                 showMessage("❌ Oops! Something went wrong. Please try again.", "error");
             }
 
         } catch (error) {
+            console.log('Fetch error', error);
             showMessage("⚠️ Network error. Please check your connection.", "error");
         }
 
